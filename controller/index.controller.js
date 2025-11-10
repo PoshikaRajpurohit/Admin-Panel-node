@@ -23,7 +23,7 @@ exports.logout = (req, res) => {
 
 exports.loginPage = (req, res) => {
   try {
-    if (!req.isAuthenticated()) {
+    if (!req.cookies.user) {
       return res.render("login");
     } else {
       return res.redirect("/dashboard");
@@ -33,6 +33,7 @@ exports.loginPage = (req, res) => {
     return res.redirect("/");
   }
 };
+
 exports.dashBoard = async (req, res) => {
    try {
     return res.render("dashboard");
